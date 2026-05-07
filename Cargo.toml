@@ -1,6 +1,6 @@
 [package]
 name = "living-postmortem-mcp"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "MCP stdio server for incident postmortems stored as markdown in a vault."
 license = "MIT"

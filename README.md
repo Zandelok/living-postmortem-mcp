@@ -35,7 +35,7 @@ It stores incidents as markdown files in your vault and exposes 4 tools:
 ### Option 1: Install published release (crates.io)
 
 ```bash
-cargo install living-postmortem-mcp --version 0.1.0
+cargo install living-postmortem-mcp --version 0.1.1
 ```
 
 ### Option 2: Build from source
