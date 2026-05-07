@@ -2,6 +2,10 @@
 
 MCP server for incident postmortems, built with Rust and `rmcp` over stdio.
 
+[![crates.io](https://img.shields.io/crates/v/living-postmortem-mcp.svg)](https://crates.io/crates/living-postmortem-mcp)
+[![docs.rs](https://docs.rs/living-postmortem-mcp/badge.svg)](https://docs.rs/living-postmortem-mcp)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Zandelok/living-postmortem-mcp/blob/main/LICENSE)
+
 It stores incidents as markdown files in your vault and exposes 4 tools:
 
 - `create_incident`
@@ -28,10 +32,16 @@ It stores incidents as markdown files in your vault and exposes 4 tools:
 
 ## Install
 
-### Option 1: Build from source (recommended today)
+### Option 1: Install published release (crates.io)
 
 ```bash
-git clone <your-repo-url> living-postmortem-mcp
+cargo install living-postmortem-mcp --version 0.1.0
+```
+
+### Option 2: Build from source
+
+```bash
+git clone https://github.com/Zandelok/living-postmortem-mcp.git
 cd living-postmortem-mcp
 cargo build --release
 ```
@@ -42,11 +52,38 @@ Binary path:
 ./target/release/living-postmortem-mcp
 ```
 
-### Option 2: Run directly in dev mode
+### Option 3: Run directly in dev mode
 
 ```bash
 cargo run -- --vault /absolute/path/to/vault
 ```
+
+### Published package links
+
+- Crate: https://crates.io/crates/living-postmortem-mcp
+- API docs: https://docs.rs/living-postmortem-mcp
+- Source: https://github.com/Zandelok/living-postmortem-mcp
+
+## Maintainer release (trusted publishing)
+
+This repository publishes through crates.io trusted publishing (OIDC) via:
+
+- `.github/workflows/publish.yml`
+
+### One-time crates.io setup
+
+In crates.io crate settings (`living-postmortem-mcp`), add a Trusted Publisher with:
+
+- Owner/organization: `Zandelok`
+- Repository: `living-postmortem-mcp`
+- Workflow file: `publish.yml`
+- Environment: leave empty unless you later add a GitHub Actions environment gate
+
+### Release workflow usage
+
+- Manual validation only: run `Publish crate` with `dry_run=true` (default).
+- Real publish: push a tag in the form `v<version>` (for example `v0.1.1`).
+- Safety guard: workflow checks that tag version matches `Cargo.toml` `version` before publishing.
 
 ## Server CLI
 
